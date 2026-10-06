@@ -88,7 +88,8 @@ export function useLandingScroll(root: RefObject<HTMLElement | null>, keys: Keyf
       return false;
     };
     const onVirtualScroll = ({ deltaY, event }: { deltaY: number; event: Event }): boolean => {
-      if (!snap || stops.length < 2 || event.type !== 'wheel') return true;
+      // открыто окно заявки: страница стоит, решает сам Lenis (прокрутка внутри окна ему разрешена)
+      if (!snap || stops.length < 2 || event.type !== 'wheel' || lenis.isStopped) return true;
       // Lenis при false выходит раньше, чем гасит событие, и браузер прокрутил бы страницу сам —
       // инерция тачпада проскакивала бы секции. Поглощённый шаг гасим здесь.
       const swallow = () => {
@@ -121,7 +122,7 @@ export function useLandingScroll(root: RefObject<HTMLElement | null>, keys: Keyf
     };
     // клавиши листают так же, как колесо: иначе стрелки и пробел проскакивали бы переходы
     const onKey = (e: KeyboardEvent) => {
-      if (!snap || stops.length < 2 || e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
+      if (!snap || stops.length < 2 || lenis.isStopped || e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
       const t = e.target as HTMLElement | null;
       if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
       const down = e.key === 'ArrowDown' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey);

@@ -2,6 +2,7 @@ import type { Landing } from '@content/landing.types';
 import type { HeroVariant } from '@content/page-plan';
 import { SplitWords } from '@shared/ui/split-words.component';
 import { scrollToId } from '@shared/lib/lenis.store';
+import { openLead } from '@shared/lib/lead-dialog.store';
 import styles from './hero.module.css';
 
 interface Props { hero: Landing['hero']; product: string; variant: HeroVariant; pin?: boolean }
@@ -16,7 +17,7 @@ export function Hero({ hero, product, variant, pin }: Props) {
         <div className={styles.lower}>
           <p className={styles.subtitle} data-reveal="now" data-delay="0.1">{hero.subtitle}</p>
           <div className={styles.actions} data-reveal="now" data-delay="0.2">
-            <button type="button" className={styles.primary} onClick={() => scrollToId('finale')}>{hero.cta}</button>
+            <button type="button" className={styles.primary} onClick={() => openLead()}>{hero.cta}</button>
             <button type="button" className={styles.secondary} onClick={() => scrollToId('story')}>{hero.ctaSecondary}</button>
           </div>
         </div>

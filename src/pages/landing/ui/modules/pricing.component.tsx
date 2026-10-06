@@ -1,6 +1,6 @@
 import type { LandingExtras } from '@content/extras.types';
 import { SplitWords } from '@shared/ui/split-words.component';
-import { scrollToId } from '@shared/lib/lenis.store';
+import { openLead } from '@shared/lib/lead-dialog.store';
 import styles from './pricing.module.css';
 
 export function Pricing({ pricing, cta }: { pricing: NonNullable<LandingExtras['pricing']>; cta: string }) {
@@ -14,7 +14,7 @@ export function Pricing({ pricing, cta }: { pricing: NonNullable<LandingExtras['
             <h3 className={styles.name}>{p.name}</h3>
             <p className={styles.price}>{p.price}<small>{p.period}</small></p>
             <ul className={styles.points}>{p.points.map((x) => <li key={x}>{x}</li>)}</ul>
-            <button type="button" className={styles.cta} onClick={() => scrollToId('finale')}>{cta}</button>
+            <button type="button" className={styles.cta} onClick={() => openLead(p.name)}>{cta}</button>
           </article>
         ))}
       </div>

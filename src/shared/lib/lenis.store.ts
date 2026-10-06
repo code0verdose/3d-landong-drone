@@ -13,6 +13,10 @@ export function scrollToTop(): void {
 export function scrollToId(id: string): void {
   const el = document.getElementById(id);
   if (!el) return;
-  if (current) current.scrollTo(el, { offset: 0, duration: 1.6 });
+  if (current) current.scrollTo(el, { offset: 0, duration: 1.6, force: true });
   else el.scrollIntoView({ behavior: 'smooth' });
 }
+
+// Пока открыто окно поверх страницы, колесо и клавиши не листают её под ним.
+export function pauseScroll(): void { current?.stop(); }
+export function resumeScroll(): void { current?.start(); }

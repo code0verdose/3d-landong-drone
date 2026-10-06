@@ -1,4 +1,5 @@
 import { scrollToId, scrollToTop } from '@shared/lib/lenis.store';
+import { openLead } from '@shared/lib/lead-dialog.store';
 import styles from './landing-nav.module.css';
 
 interface Props { brand: string; cta: string }
@@ -12,7 +13,7 @@ export function LandingNav({ brand, cta }: Props) {
         <button type="button" onClick={() => scrollToId('numbers')}>Цифры</button>
         <button type="button" onClick={() => scrollToId('features')}>Детали</button>
       </nav>
-      <button type="button" className={styles.cta} onClick={() => scrollToId('finale')}>{cta}</button>
+      <button type="button" className={styles.cta} onClick={() => openLead()}>{cta}</button>
     </header>
   );
 }

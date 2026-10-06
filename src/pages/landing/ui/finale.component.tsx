@@ -1,5 +1,6 @@
 import type { Landing } from '@content/landing.types';
 import { SplitWords } from '@shared/ui/split-words.component';
+import { openLead } from '@shared/lib/lead-dialog.store';
 import styles from './finale.module.css';
 
 export function Finale({ finale, footer, brand }: { finale: Landing['finale']; footer: string; brand: string }) {
@@ -8,7 +9,7 @@ export function Finale({ finale, footer, brand }: { finale: Landing['finale']; f
       <div className={styles.glow} aria-hidden />
       <h2 className={styles.title} data-split><SplitWords text={finale.title} /></h2>
       <p className={styles.text} data-reveal>{finale.text}</p>
-      <button type="button" className={styles.cta} data-reveal data-delay="0.15">
+      <button type="button" className={styles.cta} data-reveal data-delay="0.15" onClick={() => openLead()}>
         <span>{finale.cta}</span><i>→</i>
       </button>
       <footer className={styles.footer}>

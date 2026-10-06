@@ -17,6 +17,7 @@ import { FeaturesGrid } from './ui/features-grid.component';
 import { Finale } from './ui/finale.component';
 import { ScrollMeter } from './ui/scroll-meter.component';
 import { SceneLoader } from './ui/scene-loader.component';
+import { LeadDialog } from './ui/lead-dialog.component';
 import { ModuleSlot } from './ui/module-slot.component';
 import { Manifesto } from './ui/modules/manifesto.component';
 import styles from './page.module.css';
@@ -62,6 +63,7 @@ export function LandingPage({ landing }: { landing: Landing }) {
         <ModuleSlot kind={plan.modules[2]} extras={extras} cta={landing.hero.cta} />
         <Finale finale={landing.finale} footer={landing.footer} brand={landing.brand} />
       </main>
+      <LeadDialog plans={extras.pricing?.plans.map((p) => p.name) ?? []} />
       <SceneLoader brand={landing.brand} />
       <Cursor />
     </div>
