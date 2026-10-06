@@ -1,0 +1,17 @@
+/* линия от первой точки до последней: отступ ленты + половина точки; справа — ширина последнего шага */
+.line {
+  position: absolute; top: 38px; height: 1px;
+  left: calc(clamp(18px, 6vw, 96px) + 7px);
+  right: calc(clamp(18px, 6vw, 96px) + clamp(260px, 26vw, 380px) - 7px);
+  background: color-mix(in srgb, var(--fg) 22%, transparent);
+}
+/* заливка идёт вправо вместе с прокруткой ленты — от точки к точке */
+.fill { position: absolute; inset: -1px 0; background: var(--accent); transform-origin: left; transform: scaleX(0); }
+.dot { z-index: 1; }
+.step { position: relative; flex: none; width: clamp(260px, 26vw, 380px); padding-top: 70px; padding-right: 40px; }
+.dot { position: absolute; top: 31px; left: 0; width: 15px; height: 15px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 16%, transparent); }
+.label { display: block; font: 500 13px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+.title { margin: 0 0 14px; font: 400 clamp(24px, 2.2vw, 36px)/1.1 var(--display); letter-spacing: -0.01em; }
+.text { margin: 0; font: 400 16px/1.6 var(--body); color: var(--muted); max-width: 32ch; }
+:global([data-layout='tech']) .label { font-family: var(--mono); }
+:global([data-layout='editorial']) .title { font-style: italic; }

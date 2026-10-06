@@ -1,0 +1,5 @@
+.bar { position: fixed; inset: 0 0 auto 0; height: 2px; background: var(--accent); transform-origin: left; transform: scaleX(0); z-index: 30; }
+.rail { position: fixed; right: 26px; top: 50%; height: 34vh; translate: 0 -50%; width: 1px; background: color-mix(in srgb, var(--fg) 18%, transparent); z-index: 15; }
+.fill { position: absolute; inset: 0; background: var(--accent); transform-origin: top; transform: scaleY(0); }
+.rail span { position: absolute; left: -3px; width: 7px; height: 7px; border-radius: 50%; translate: 0 -50%; background: var(--bg); border: 1px solid color-mix(in srgb, var(--fg) 45%, transparent); }
+@media (max-width: 820px) { .rail { display: none; } }

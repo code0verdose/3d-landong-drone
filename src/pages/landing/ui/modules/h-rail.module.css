@@ -1,0 +1,12 @@
+.wrap { position: relative; height: 100svh; display: grid; grid-template-rows: auto 1fr auto; padding: 12vh 0 8vh; background: color-mix(in srgb, var(--bg) 94%, transparent); overflow: hidden; }
+.head { padding: 0 clamp(18px, 6vw, 96px); display: grid; gap: 14px; }
+.kicker { font: 500 12px/1 var(--body); letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+.title { margin: 0; font: 400 clamp(34px, 4vw, 70px)/1.02 var(--display); letter-spacing: -0.02em; max-width: 18ch; }
+.viewport { display: flex; align-items: center; }
+.track { position: relative; display: flex; gap: 22px; padding: 0 clamp(18px, 6vw, 96px); will-change: transform; }
+.progress { margin: 0 clamp(18px, 6vw, 96px); height: 1px; background: color-mix(in srgb, var(--fg) 14%, transparent); }
+.progress i { display: block; height: 100%; background: var(--accent); transform-origin: left; transform: scaleX(0); }
+:global([data-layout='editorial']) .title { font-style: italic; }
+:global([data-layout='tech']) .kicker { font-family: var(--mono); }
+.head { min-width: 0; }
+@media (max-width: 700px) { .title { font-size: clamp(28px, 8.4vw, 40px); max-width: 100%; } }

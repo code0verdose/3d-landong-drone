@@ -1,0 +1,7 @@
+.wrap { overflow: hidden; padding: 6vh 0; border-block: 1px solid color-mix(in srgb, var(--fg) 12%, transparent); background: color-mix(in srgb, var(--bg) 70%, transparent); }
+.track { display: flex; width: max-content; will-change: transform; }
+.solid, .outline { font: 400 clamp(56px, 9vw, 150px)/1 var(--display); letter-spacing: -0.02em; padding-right: .4em; white-space: nowrap; display: inline-flex; align-items: center; gap: .4em; }
+.outline { color: transparent; -webkit-text-stroke: 1px var(--fg); }
+.solid i, .outline i { font-style: normal; font-size: .4em; color: var(--accent); -webkit-text-stroke: 0; }
+:global([data-layout='editorial']) .solid, :global([data-layout='editorial']) .outline { font-style: italic; }
+:global([data-layout='tech']) .solid, :global([data-layout='tech']) .outline { text-transform: uppercase; }

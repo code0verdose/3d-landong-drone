@@ -1,0 +1,12 @@
+.wrap { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(24px, 6vw, 110px); align-items: start; padding: 18vh clamp(18px, 6vw, 96px); background: color-mix(in srgb, var(--bg) 92%, transparent); }
+.title { position: sticky; top: 22vh; margin: 0; font: 400 clamp(36px, 4.4vw, 76px)/1.02 var(--display); letter-spacing: -0.02em; }
+.table { margin: 0; display: grid; }
+.row { display: grid; grid-template-columns: auto 1fr auto; align-items: baseline; gap: 16px; padding: 22px 0; border-bottom: 1px solid color-mix(in srgb, var(--fg) 12%, transparent); }
+.row dt { font: 400 16px/1.4 var(--body); color: var(--muted); }
+.row dd { margin: 0; font: 400 clamp(20px, 2vw, 30px)/1.1 var(--display); text-align: right; font-variant-numeric: tabular-nums; }
+.leader { height: 1px; background-image: linear-gradient(90deg, color-mix(in srgb, var(--fg) 30%, transparent) 40%, transparent 0); background-size: 7px 1px; translate: 0 -5px; }
+.row:hover dd { color: var(--accent); }
+:global([data-layout='tech']) .row dt, :global([data-layout='tech']) .row dd { font-family: var(--mono); }
+:global([data-layout='tech']) .row dd { font-size: clamp(16px, 1.4vw, 21px); }
+:global([data-layout='editorial']) .title { font-style: italic; }
+@media (max-width: 860px) { .wrap { grid-template-columns: 1fr; } .title { position: static; } }

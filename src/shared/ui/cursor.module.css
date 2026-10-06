@@ -1,0 +1,4 @@
+.ring, .dot { position: fixed; top: 0; left: 0; z-index: 60; pointer-events: none; border-radius: 50%; opacity: 0; transition: opacity .4s; }
+.ring { width: 34px; height: 34px; margin: -17px 0 0 -17px; border: 1px solid var(--accent, #fff); transition: scale .3s, background .3s, width .3s; mix-blend-mode: normal; }
+.dot { width: 6px; height: 6px; margin: -3px 0 0 -3px; background: var(--accent, #fff); }
+@media (pointer: coarse) { .ring, .dot { display: none; } }

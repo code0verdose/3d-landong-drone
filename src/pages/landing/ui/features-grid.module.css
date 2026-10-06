@@ -1,0 +1,52 @@
+.wrap { padding: 16vh clamp(18px, 6vw, 96px); background: color-mix(in srgb, var(--bg) 88%, transparent); }
+.head { display: grid; gap: 18px; margin-bottom: 64px; max-width: 900px; }
+.kicker { font: 500 12px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.title { font: 400 clamp(38px, 4.6vw, 80px)/1 var(--display); letter-spacing: -0.02em; margin: 0; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.card {
+  position: relative; padding: 30px 28px 34px; border-radius: 20px; min-height: 230px;
+  border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+  background: color-mix(in srgb, var(--fg) 3%, transparent);
+  transition: transform .5s cubic-bezier(.2,.8,.2,1), border-color .5s, background .5s;
+  overflow: hidden;
+}
+.card::after {
+  content: ''; position: absolute; inset: auto -30% -60% auto; width: 70%; aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 45%, transparent), transparent 70%);
+  opacity: 0; transition: opacity .6s;
+}
+.card:hover { transform: translateY(-6px); border-color: color-mix(in srgb, var(--accent) 60%, transparent); }
+.card:hover::after { opacity: 1; }
+.num { font: 500 13px/1 var(--body); color: var(--accent); font-variant-numeric: tabular-nums; }
+.cardTitle { font: 400 clamp(21px, 1.7vw, 27px)/1.2 var(--display); margin: 44px 0 14px; letter-spacing: -0.01em; }
+.text { font: 400 15px/1.6 var(--body); color: var(--muted); margin: 0; position: relative; z-index: 1; }
+:global([data-layout='tech']) .card { border-radius: 0; }
+:global([data-layout='tech']) .num, :global([data-layout='tech']) .kicker { font-family: var(--mono); }
+:global([data-layout='editorial']) .title, :global([data-layout='editorial']) .cardTitle { font-style: italic; }
+:global([data-layout='editorial']) .card { border-radius: 0; border-width: 0 0 1px 0; background: transparent; padding-inline: 0; }
+@media (max-width: 1000px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .grid { grid-template-columns: 1fr; } .card { min-height: 0; } }
+
+/* бенто: первая карточка крупная, остальные разного размера */
+.wrap[data-variant='bento'] .grid { grid-template-columns: repeat(4, 1fr); grid-auto-rows: minmax(210px, auto); }
+.wrap[data-variant='bento'] .card:nth-child(1) { grid-column: span 2; grid-row: span 2; background: linear-gradient(150deg, color-mix(in srgb, var(--accent) 24%, transparent), color-mix(in srgb, var(--fg) 3%, transparent) 70%); }
+.wrap[data-variant='bento'] .card:nth-child(1) .cardTitle { font-size: clamp(30px, 3vw, 48px); margin-top: auto; }
+.wrap[data-variant='bento'] .card:nth-child(1) { display: flex; flex-direction: column; }
+.wrap[data-variant='bento'] .card:nth-child(4) { grid-column: span 2; }
+.wrap[data-variant='bento'] .card:nth-child(6) { grid-column: span 2; }
+/* редакционный список: крупные номера, строки с разделителями */
+.wrap[data-variant='list'] .grid { grid-template-columns: 1fr; gap: 0; }
+.wrap[data-variant='list'] .card {
+  display: grid; grid-template-columns: 90px minmax(0, 1fr) minmax(0, 1.2fr); align-items: baseline; gap: 24px;
+  min-height: 0; padding: 34px 0; border-radius: 0; border-width: 0 0 1px 0; background: transparent;
+}
+.wrap[data-variant='list'] .card:hover { transform: translateX(10px); }
+.wrap[data-variant='list'] .card::after { display: none; }
+.wrap[data-variant='list'] .num { font: 400 clamp(28px, 2.6vw, 42px)/1 var(--display); color: var(--accent); }
+.wrap[data-variant='list'] .cardTitle { margin: 0; font-size: clamp(22px, 2.2vw, 36px); }
+@media (max-width: 1000px) {
+  .wrap[data-variant='bento'] .grid { grid-template-columns: repeat(2, 1fr); }
+  .wrap[data-variant='list'] .card { grid-template-columns: 56px 1fr; }
+  .wrap[data-variant='list'] .text { grid-column: 2; }
+}
+@media (max-width: 640px) { .wrap[data-variant='bento'] .grid { grid-template-columns: 1fr; } .wrap[data-variant='bento'] .card { grid-column: auto !important; grid-row: auto !important; } }

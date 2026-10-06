@@ -1,0 +1,7 @@
+node_modules
+dist
+*.tsbuildinfo
+.DS_Store
+blender/*.blend1
+__pycache__/
+.tanstack
